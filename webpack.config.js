@@ -5,10 +5,13 @@ module.exports = {
   // 默认为执行启动webpack 时所在的当前工作目录，可以配置改变设置它
   // context 必须是一个绝对的字符串。
   context: path.resolve(__dirname, '.'),
-  entry: './main.js',
+  entry: {
+    main: './main.js',
+    index: './index.js'
+  },
   output: {
     // 将所有依赖模块合并，并输出到bundle.js文件
-    filename: 'bundle.js',
+    filename: '[name].[hash:5].js',
     // 将输出的问题放到dist目录下
     path: path.resolve(__dirname, './dist'),
   },
