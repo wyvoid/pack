@@ -28,6 +28,7 @@ module.exports = {
     ]
   },
   plugins: [
+    
     // 使用 npm i extract-text-webpack-plugin 会报错，因为没有对应的webpack4版本支持
     // 改用 npm i extract-text-webpack-plugin@next --save-dev
     new ExtractTextPlugin({
