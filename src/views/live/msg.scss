@@ -1,0 +1,454 @@
+//即时通讯
+.msgBg{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index: 90;
+  background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.2)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.2)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.2)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.2)); /* 标准的语法 */
+}
+.msgBlock{
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  padding: 0 14px;
+
+}
+
+.goods-icon{
+  display: inline-block;
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-top: -2px;
+  background: url("../../../static/img/live-icon.png") ;
+  background-size:32px 32px;
+  background-repeat:no-repeat;
+  text-align: center;
+  line-height: 32px;
+  font-size:11px;
+  color:rgba(255,255,255,1);
+  padding-top: 5px;
+}
+.msgInput{
+  display: inline-block;
+  float: left;
+  margin-left: .14rem;
+  width: 1.50rem;
+  height: .32rem;
+  line-height: .32rem;
+  padding-left: .15rem;
+  background: rgba(0,0,0,.2);
+  border-radius: 16px;
+  color: #ffffff;
+}
+.msgSend{
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  float: left;
+  width: .32rem;
+  height: .32rem;
+  margin-left: .22rem;
+  background: rgba(0,0,0,.2);
+  border-radius: 50%;
+  padding-top: 6px;
+  text-align: center;
+  .LikeImglistBox{
+    position: absolute;
+    right: 0.09rem;
+    bottom: 0.09rem;
+    width: .18rem;
+    height: .18rem;
+    img{
+      position: absolute;
+      right:0;
+      bottom: 0;
+      display: block;
+    }
+  }
+}
+.msgSend img{
+  width: 18px;
+  height: 18px;
+}
+
+.ml15{
+  margin-left: .15rem !important;
+}
+.msgContent{
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  height: 170px;
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  overflow-x: hidden;
+	overflow-y: auto;
+}
+.msgContent p{
+  font-size: 12px;
+  color: #ffffff;
+}
+.msgContent p .userName{
+  color: #FF6004;
+}
+.msgContent p .userContent{
+  color: #ffffff;
+}
+.msgSystem{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  height: 20px;
+  line-height: 20px;
+  min-width: 100px;
+  border-radius: 10px;
+  background: rgba(255,0,0,.5);
+  color: #ffffff;
+  padding-left: 10px;
+  font-size: 10px;
+}
+//主播信息
+.anchorInfo{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  min-width: 180px;
+  height: 32px;
+  border-radius: 16px;
+  padding-left: 3px;
+  padding-top: 3px;
+  background: rgba(0,0,0,.2);
+}
+.anchorInfo .anchorImg{
+  display: inline-block;
+  float: left;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+}
+.anchorInfo p{
+  display: inline-block;
+  box-sizing: border-box;
+  float: left;
+  color: #ffffff;
+  height: 26px;
+  line-height: 12px;
+  padding-left: 5px;
+}
+.anchorInfo p .anchorName{
+  font-size: 12px;
+}
+.anchorInfo p .anchorNum{
+  font-size: 8px;
+}
+.anchorBtn{
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  top: 3px;
+  //float: left;
+  // width: 44px;
+  height: 22px;
+  border-radius: 11px;
+  font-size: 12px;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 2px;
+  margin: 1px 7px 2px 8px;
+  // background: -webkit-linear-gradient(#FF5533,#FF5151); /* Safari 5.1 - 6.0 */
+  // background: -o-linear-gradient(top,#FF5533,#FF5151); /* Opera 11.1 - 12.0 */
+  // background: -moz-linear-gradient(top,#FF5533,#FF5151); /* Firefox 3.6 - 15 */
+  // background: linear-gradient(#FF5533,#FF5151); /* 标准的语法 */
+  span{
+    display: inline-block;
+    height: 0.22rem;
+    line-height: 0.22rem;
+    font-size:.12rem;
+    padding: 0 .1rem;
+    border-radius:.15rem;
+  }
+  .attention-un{
+    color:rgba(255,255,255,1);
+    background:linear-gradient(270deg,rgba(255,85,51,1) 0%,rgba(255,81,81,1) 100%);
+  }
+  .attention-ed{
+    color:rgba(181,181,181,1);
+    background:rgba(240,240,240,1);
+  }
+}
+
+//点亮商品
+.anchorLight{
+  position: absolute;
+  top: 60px;
+  left: 15px;
+}
+.anchorLight .lightGoods{
+  position: relative;
+  width: 64px;
+  height: 80px;
+  background: #2C2C34;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+.anchorLight .lightGoods img{
+  border-radius: 3px 3px 0 0;
+  float: left;
+  width: 64px;
+  height: 64px;
+}
+.anchorLight .lightGoods .lightTitle{
+  float: left;
+  color: #ffffff;
+  font-size: 10px;
+}
+
+
+//商品
+.goodsListBox{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 199;
+  width: 100%;
+  height: 385px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  margin: 10px auto;
+}
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.swiper-slide {
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  background: rgba(44,44,52,.7);
+  width: 300px !important;
+  height: 385px;
+  border-radius: 6px;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  //-webkit-box-pack: center;
+  //-ms-flex-pack: center;
+  //-webkit-justify-content: center;
+  //justify-content: center;
+  //-webkit-box-align: center;
+  //-ms-flex-align: center;
+  //-webkit-align-items: center;
+  //align-items: center;
+}
+//.swiper-slide:nth-child(2n) {
+//  width: 40%;
+//}
+//.swiper-slide:nth-child(3n) {
+//  width: 20%;
+//}
+.goodsCat{
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  top:-52px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0,0,0,.3);
+  border-radius: 100px;
+  z-index: 199;
+  text-align: center;
+  padding-top: 5px;
+}
+.goodsCat img{
+  width: 22px;
+  height: 22px;
+}
+.goodsCat .hasGoods{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 100px;
+  background-color: #EC3232;
+}
+.goodsParams{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.goodsTitle{
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.goodsTitleImg{
+  display: inline-block;
+  float: left;
+  width: 80px;
+  height: 80px;
+  border-radius: 3px;
+}
+.levelLabel{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 8px;
+  //width:19px;
+  padding: 1px 5px 2px 3px;
+
+  text-align: center;
+  //height:14px;
+  font-size: 9px;
+  color: #ffffff;
+  background:linear-gradient(270deg,rgba(255,85,51,1) 0%,rgba(255,81,81,1) 100%);
+  border-radius:0px 14px 14px 0px;
+}
+.goodsTitleText{
+  display: inline-block;
+  float: left;
+  width: 200px;
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 18px;
+  text-align: left;
+  padding-left: 10px;
+  padding-right:10px ;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.textColor{
+  color: #FF5151;
+  font-size: 14px;
+  padding-top: 15px;
+}
+.goodsLine{
+  display: block;
+  float: left;
+  border-top: 1px solid rgba(213,213,213,.2);
+  width: 100%;
+  height: 1px;
+  transform: scaleY(.2);
+}
+.goodsSpecs{
+  display: block;
+  width: 100%;
+  float: left;
+  min-height: 165px;
+  height: 165px;
+  //padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-y: auto;
+}
+.goodsSpecsTitle{
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  text-align: left;
+  float: left;
+  margin-top: 10px;
+}
+.goodsSpecsItem{
+  display: block;
+  width: 100%;
+  float: left;
+  margin-top: 5px;
+}
+.goodsSpecsItem .item{
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 12px;
+  padding: 2px 10px 1px;
+  //height: 24px;
+  border-radius: 12px;
+  border: 1px solid #999;
+  color: #D5D5D5;
+}
+.goodsSpecsItem .item.active{
+  background: #E5E5E5;
+  color: #1A1A1A;
+}
+.goodsNum{
+  display: block;
+  width: 100%;
+  float: right;
+  font-size: 12px;
+  height: 40px;
+  color: #ffffff;
+}
+.goodsNum .textLeft{
+  float: left;
+}
+.goodsNum .numBtn{
+  display: inline-block;
+  float: right;
+  width: 30px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #E5E5E5;
+  text-align: center;
+  line-height: 20px;
+  color: #1A1A1A;
+}
+.goodsNum .numText{
+  display: inline-block;
+  float: right;
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background: transparent;
+  color: #ffffff;
+}
+.goodsPlus{
+
+}
+.goodsFoot{
+  display: block;
+  width: 100%;
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.goodsFoot .liveBtn{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  color: #ffffff;
+}
+.goodsFoot .liveBtn.cat{
+  //background: -webkit-linear-gradient(#342D2D,#423C3C); /* Safari 5.1 - 6.0 */
+  //background: -o-linear-gradient(top,#342D2D,#423C3C); /* Opera 11.1 - 12.0 */
+  //background: -moz-linear-gradient(top,#342D2D,#423C3C); /* Firefox 3.6 - 15 */
+  background: linear-gradient(270deg,rgba(52,45,45,1) 0%,rgba(66,60,60,1) 100%);/* 标准的语法 */
+}
+.goodsFoot .liveBtn.buy{
+  //background: -webkit-linear-gradient(#FF5533,#FF5151); /* Safari 5.1 - 6.0 */
+  //background: -o-linear-gradient(top,#FF5533,#FF5151); /* Opera 11.1 - 12.0 */
+  //background: -moz-linear-gradient(top,#FF5533,#FF5151); /* Firefox 3.6 - 15 */
+  background: linear-gradient(270deg,rgba(255,85,51,1) 0%,rgba(255,81,81,1) 100%); /* 标准的语法 */
+}
+

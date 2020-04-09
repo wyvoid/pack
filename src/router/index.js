@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import main from '@/views/main'
 import my from '@/views/my'
+import liveList from '@/views/live/liveList'
+import liveRoom from '@/views/live/liveRoom'
 
 const routes = [
   {
@@ -14,6 +16,16 @@ const routes = [
     name: 'my',
     path: '/my',
     component: my,
+  },
+  {
+    name: 'liveList',
+    path: '/liveList',
+    component: liveList
+  },
+  {
+    name: "liveRoom",
+    path: '/liveRoom',
+    component: liveRoom
   }
 ]
 export default new VueRouter({

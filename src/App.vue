@@ -6,6 +6,7 @@
   <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
   <router-link to="/">Go to Main</router-link>
   <router-link to="/my">Go to my</router-link>
+  <router-link to="/liveList">Go to liveList</router-link>
   <router-view></router-view>
 </div>
 </template>

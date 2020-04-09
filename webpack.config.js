@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-module.exports = {
+const webpackConfig = {
   // mode: production / development 两种模式
   mode: 'development',
   // 输出 source-map 以方便调试 ES6 源码
@@ -17,10 +17,23 @@ module.exports = {
     port: 8888,
     open: true,
     contentBase: resolve('dist'),
-		// history模式下的url会请求到服务器端，但是服务器端并没有这一个资源文件，就会返回404，所以需要配置这一项
-		historyApiFallback: {
-			index: 'index.html' //与output的publicPath有关(HTMLplugin生成的html默认为index.html)
-		}   
+    proxy: {
+      '/api/':{
+        // target:'http://adyunwm.com/api/', //正式
+        target:'http://preh5.psgxs.com/api',//预发
+        // target:'http://192.168.40.215:8080/api',     //测试215
+        // target:'http://192.168.40.246:8080/api',   //测试246
+        changeOrigin:true,
+        pathRewrite:{
+          '/api/': '/'
+        }
+      }
+    },
+    publicPath: resolve('/'),
+    // history模式下的url会请求到服务器端，但是服务器端并没有这一个资源文件，就会返回404，所以需要配置这一项
+    historyApiFallback: {
+      index: 'index.html' //与output的publicPath有关(HTMLplugin生成的html默认为index.html)
+    },
   },
   // 默认为执行启动webpack 时所在的当前工作目录，可以配置改变设置它
   // context 必须是一个绝对的字符串。
@@ -112,3 +125,6 @@ module.exports = {
     new VueLoaderPlugin(),
   ]
 }
+
+
+module.exports = webpackConfig
