@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div style="float: left;"  @click="goodsType=false">
+    <div style="float: left;width:100px;height:100px;"  @click="goodsType=false">
           <div class="prism-player" @play="play($event)" :id="playerId"></div>
     </div>
     <!-- 主播信息-->
@@ -240,7 +240,7 @@
       ]
       }
     },
-    activated(){
+    mounted(){     
       document.getElementById('content').innerHTML = '';
       this.roomId = this.$route.params.roomId || this.$route.query.roomId;
       this.getLiveUrl(this.roomId);
@@ -252,9 +252,6 @@
                 // 如果全局对象不存在，说明编辑器代码还没有加载完成，需要加载编辑器代码
                 this.insertScriptTag();
               }
-    },
-
-    mounted(){     
 
     },
     sockets:{
@@ -388,7 +385,6 @@
       },
       //获取直播地址
       getLiveUrl(roomId){
-        // debugger
         let w = document.documentElement.clientWidth;
         let h = document.documentElement.clientHeight;
         let _this = this
@@ -405,9 +401,9 @@
             _this.anchorInfo = response.data.userLiveVos[0];
             _this.logId = response.data.logId;
             _this.isAttention = response.data.isAttention;
-             _this.getGoodsList(_this.logId);
-            _this.togetLikeImg(0);
-            _this.getLightGoods(_this.logId);
+            //  _this.getGoodsList(_this.logId);
+            // _this.togetLikeImg(0);
+            // _this.getLightGoods(_this.logId);
                 if (window.Aliplayer !== undefined) {
                   // 如果全局对象存在，说明编辑器代码已经初始化完成，直接加载编辑器
                   _this.scriptTagStatus = 2;
@@ -416,17 +412,17 @@
                   // 如果全局对象不存在，说明编辑器代码还没有加载完成，需要加载编辑器代码
                   _this.insertScriptTag();
                 }
-            _this.getUserByInvitationCode(function(){
-              _this.$socket.emit('join', {userName:_this.userName,roomId:_this.roomId,logId:_this.logId}); 
-            });
-            _this.reload();
+            // _this.getUserByInvitationCode(function(){
+            //   _this.$socket.emit('join', {userName:_this.userName,roomId:_this.roomId,logId:_this.logId}); 
+            // });
+            // _this.reload();
           }else{
             MessageBox.alert(response.reason).then(action => {
               this.$router.go(-1);
             })
           }
         },function(err){
-
+        }).catch(err => {
         })
       },
       //获取本场直播商品
@@ -689,6 +685,7 @@
           if (!_this.isLive) {
             skin = _this.playSkin;
           }
+          let playSource = _this.playSource.replace('http://live.ipanshi.com', location.origin)
           _this.instance = window.Aliplayer({
             id: _this.playerId,
             autoplay: true,
@@ -702,7 +699,7 @@
             useFlashPrism: false,
             vid: _this.vid,
             playauth: _this.playauth,
-            source: _this.playSource,
+            source: playSource,
             cover: _this.cover,
             skinLayout: skin,
             x5_video_position:"center",

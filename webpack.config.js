@@ -3,6 +3,7 @@ const resolve = dir => path.resolve(__dirname, dir)
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const webpackConfig = {
   // mode: production / development 两种模式
@@ -27,6 +28,11 @@ const webpackConfig = {
         pathRewrite:{
           '/api/': '/'
         }
+      },
+      '/ps/': {
+        target:'http://live.ipanshi.com',//预发
+        ws: true, // proxy websockets
+        changeOrigin:true,
       }
     },
     publicPath: resolve('/'),
@@ -118,11 +124,16 @@ const webpackConfig = {
       // filename: `style.css`,
     }),
     new HtmlWebpackPlugin({
+      // filename: 'index.[contenthash:8].html', // 生成的html存放路径，相对于publicPath
       filename: 'index.html', // 生成的html存放路径，相对于publicPath
       template: 'index.html', // html模板路径,      
       inject: true,
     }),
     new VueLoaderPlugin(),
+    // 在每次生成dist目录前，先删除本地的dist文件
+    new CleanWebpackPlugin({
+      // cleanOnceBeforeBuildPatterns: ['**/*', '!index*.html'],
+    })
   ]
 }
 

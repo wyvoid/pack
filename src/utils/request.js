@@ -10,7 +10,7 @@ import { Toast } from 'mint-ui'
 // localStorage.setItem('token','d1747f84-b62b-4743-9a90-1360d43c251e')
 const token=localStorage.getItem('token')
 if(token){
-  axios.defaults.headers.common['Authorization'] = token || ''
+  axios.defaults.headers.common['Authorization'] = token || '446e9e0b-22f2-4b53-9361-be2188a67922'
 }
 axios.defaults.headers.common['platform'] ='H5'
 axios.defaults.headers.common['appVersion'] ='V2.5'
@@ -22,7 +22,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 //POST传参序列化
 axios.interceptors.request.use((config) => {
   // 邀请码兼容问题修改：后端要求传invitationCode参数
-  config.headers['invitationCode'] = localStorage.getItem('invitationCode') || ''
+  config.headers['invitationCode'] = localStorage.getItem('invitationCode') || '947727'
   if (config.method === 'post') {
     // POST 秦秋参数是以键值对的形式存在请求体里， 用qs.stringify() 就是把传入的对象转换为键值对
     config.data = querystring.stringify(config.data)
@@ -34,11 +34,11 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) => {
-  if(res.data.resultCode == 401){
-    localStorage.removeItem('token')
-    localStorage.setItem('fullPath',location.href)
-    location.href=window.location.origin+'/index/getCode'
-  }
+  // if(res.data.resultCode == 401){
+  //   localStorage.removeItem('token')
+  //   localStorage.setItem('fullPath',location.href)
+  //   location.href=window.location.origin+'/index/getCode'
+  // }
   return res
 }, (err) => {
   if (err.message === 'Network Error') {
