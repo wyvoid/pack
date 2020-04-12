@@ -30,7 +30,6 @@ export default {
     });
 
     function moveAction(e) {
-      console.log('dddd',binding.value)
       clientX = e.targetTouches[0].clientX
       clientY = e.targetTouches[0].clientY
       dragEl.style.cssText += `;left:${(clientX - dragEl.offsetWidth/2)}px;top:${(clientY - dragEl.offsetHeight/2)}px;`;
