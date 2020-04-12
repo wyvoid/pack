@@ -16,6 +16,7 @@ const webpackConfig = {
     // 所以这里不用多余的开启热更新
     // hot: false,
     port: 8888,
+    host: '192.168.1.3',
     open: true,
     contentBase: resolve('dist'),
     proxy: {
@@ -38,7 +39,7 @@ const webpackConfig = {
     publicPath: resolve('/'),
     // history模式下的url会请求到服务器端，但是服务器端并没有这一个资源文件，就会返回404，所以需要配置这一项
     historyApiFallback: {
-      index: 'index.html' //与output的publicPath有关(HTMLplugin生成的html默认为index.html)
+      index: '/index.html' //与output的publicPath有关(HTMLplugin生成的html默认为index.html)
     },
   },
   // 默认为执行启动webpack 时所在的当前工作目录，可以配置改变设置它
