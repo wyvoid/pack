@@ -1,6 +1,7 @@
 const path = require('path')
 const resolve = dir => path.resolve(__dirname, dir)
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -9,7 +10,9 @@ const webpackConfig = {
   // mode: production / development 两种模式
   mode: 'development',
   // 输出 source-map 以方便调试 ES6 源码
-  devtool: 'source-map',
+  // devtool: process.env.NODE_ENV === 'development' ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
+  devtool: process.env.NODE_ENV === 'development' ? 'cheap-eval-source-map' : '',
+  // devtool: 'source-map',
   // 开启监听模式
   devServer: {
     // webpack-dev-server 默认已经开启热更新模式，如果配置 hot: true 的话会导致热更新失效
@@ -72,6 +75,12 @@ const webpackConfig = {
     // import './src/components/button'  -->   可以用  import 'button' 导入
     modules: ['./src/components', 'node_modules'],
   },
+  externals: {
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'axios': 'axios',
+    'mint-ui': 'MINT',
+  },  
   module: {
     rules: [
       {
@@ -80,13 +89,24 @@ const webpackConfig = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader'
-          ]
-        }),        
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                `./src/assets/css/common.scss`
+              ]
+            },
+          }
+        ]       
       },
       {
         test: /\.(gif|png|jpe?g|eot|ttf|svg|pdf)$/,
@@ -116,7 +136,7 @@ const webpackConfig = {
     
     // 使用 npm i extract-text-webpack-plugin 会报错，因为没有对应的webpack4版本支持
     // 改用 npm i extract-text-webpack-plugin@next --save-dev
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       // webpack4.3包含了contenthash 这个关键字段，所以在ExtractTextPlugin 中不能使用 contenthash
       // 使用 md5:contenthash:hex:8 替代
       // filename: `[name]_[contenthash:8].css`,
